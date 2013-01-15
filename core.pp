@@ -205,10 +205,6 @@ class control($crosstalk_ip) {
 	dhcp_use_namespaces     	=> "True",
     }
 
-   service {'networking':
-    ensure      => 'running',
-  }
-
 }
 
 

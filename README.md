@@ -26,6 +26,8 @@ Run the site generator:
 
 "Reset" your environment
 
+  puppet apply -v /etc/puppet/manifests/site.pp
+  puppet plugin download
   /etc/puppet/manifests/reset_site.sh
 
 Wait ~ 15 minutes, and then check out your new OpenStack cluster:

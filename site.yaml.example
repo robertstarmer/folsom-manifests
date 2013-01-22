@@ -1,44 +1,49 @@
 default:
-  dns_server: 192.168.0.254
-  domain_name: cisco.lab
-  ntp_server: 192.168.0.254
+  dns_server: 192.168.26.186
+  domain_name: twentyfive.lab
+  ntp_server: 192.168.25.1
   admin: localadmin
   password: ubuntu
-  apt_location: ftp://ftpeng.cisco.com/openstack/cisco
-  network: 192.168.0.0
+  apt_location: http://192.168.26.163/openstack/cisco
+  network: 192.168.25.0
   netmask: 255.255.255.0
-  gateway: 192.168.0.1
-  sql_mask: 192.168.0.%
+  gateway: 192.168.25.1
+  sql_mask: 192.168.25.%
+  float_range: 192.168.25.96/27
   power_admin: admin
-  power_password: password
-  power_type: ipmitool
-  install_drive: /dev/sdc
+  power_password: C1sc01234
+  power_type: ucs
+  install_drive: /dev/sda
 build_node:
-  name: build-server
+  name: build-25
   type: build
-  ip: 192.168.0.254
-  power_address: 192.168.1.254:test-org
-  power_id: OpenStackProfile1
-  mac: 00:11:22:33:44:55:01
+  ip: 192.168.25.254
+  power_address: 192.168.26.18
+  power_id: Essex1-NOPOWER
+  mac: 00:25:B5:00:05:7E
+  mac1: 00:25:B5:00:05:6E
 control:
   name: control
   type: control
-  ip: 192.168.0.10
-  power_address: 192.168.1.10
-  mac: 00:11:22:33:44:55:02
-  mac1: 00:11:22:33:44:55:12
+  ip: 192.168.25.10
+  power_address: 192.168.26.18
+  power_id: Essex2
+  mac: 00:25:B5:00:05:5E
+  mac1: 00:25:B5:00:05:4E
 compute_nodes:
   compute1:
     name: compute1
     type: compute
-    ip: 192.168.0.21
-    power_address: 192.168.1.21
-    mac: 00:11:22:33:44:55:03
-    mac1: 00:11:22:33:44:55:13
+    ip: 192.168.25.21
+    power_address: 192.168.26.18
+    power_id: Essex3
+    mac: 00:25:B5:00:05:3E
+    mac1: 00:25:B5:00:05:2E
   compute2:
     name: compute2
     type: compute
-    ip: 192.168.0.22
-    power_address: 192.168.1.22
-    mac: 00:11:22:33:44:55:04
-    mac1: 00:11:22:33:44:55:14
+    ip: 192.168.25.22
+    power_address: 192.168.26.18
+    power_id: Essex4
+    mac: 00:25:B5:00:05:1E
+    mac1: 00:25:B5:00:05:0E

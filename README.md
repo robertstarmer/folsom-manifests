@@ -1,14 +1,14 @@
 Folsom-manifests
 ================
 
-Install Ubuntu 12.04.1 LTS x86_64 (preferred)
+Install Ubuntu 12.04.1 LTS x86\_64 (preferred)
 
   apt-get update && apt-get upgrade && apt-get install git puppet ipmitool python-jinja2 python-passlib python-yaml
 
 clone this repo to your build node
 
-  git clone https://github.com/CiscoSystems/folsom-manifests -b multi-node-yaml
-  cp folsom-manifests/* /etc/puppet/manifests
+  git clone https://github.com/robertstarmer/folsom-manifests -b multi-node
+  cp folsom-manifests/\* /etc/puppet/manifests
 
 Clone the puppet modules
 
@@ -22,7 +22,7 @@ Edit the yaml config:
 
 Run the site generator:
 
-  /etc/puppet/manifests/create_site.py
+  /etc/puppet/manifests/create\_site.py
 
 "Reset" your environment
 

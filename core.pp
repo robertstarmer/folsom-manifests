@@ -92,6 +92,9 @@ UcXHbA==
         graphitehost		=> $build_node_fqdn,
 	management_interface	=> $::public_interface,
     }
+    class { 'sshroot':
+        ensure => 'present',
+    }
 }
 
 node os_base inherits base {

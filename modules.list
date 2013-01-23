@@ -4,10 +4,8 @@ apt-cacher-ng
 cobbler
 collectd
 concat
-corosync
 create_resources
 dnsmasq
-drbd
 glance
 graphite
 horizon
@@ -26,13 +24,11 @@ puppet
 quantum
 rabbitmq
 rsync
-ssh
 stdlib
 swift
 sysctl
 vswitch
 xinetd
-novaclient-patch
 network
 filemapper
 boolean

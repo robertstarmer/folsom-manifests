@@ -207,7 +207,7 @@ class control($crosstalk_ip) {
     ensure => 'present',
     hotplug => false,
     family => 'inet',
-    ipaddress => "$::controller_node_address",
+    ipaddress => "$crosstalk_ip",
     method => 'static',
     netmask => "$::node_netmask",
     options => { 
@@ -235,6 +235,7 @@ class control($crosstalk_ip) {
     method => 'static',
     ipaddress => '0.0.0.0',
     netmask => '255.255.255.255',
+    options => {},
     onboot => 'true',
     notify => Service['networking'],
   }
@@ -309,6 +310,48 @@ class compute($internal_ip, $crosstalk_ip) {
 	ovs_root_helper          	=> "sudo quantum-rootwrap /etc/quantum/rootwrap.conf",
 	ovs_sql_connection       	=> "mysql://quantum:quantum@${controller_node_address}/quantum",
     }
+
+  network_config { "$::private_interface":
+    ensure => 'present',
+    hotplug => false,
+    family => 'inet',
+    ipaddress => "$crosstalk_ip",
+    method => 'static',
+    netmask => "$::node_netmask",
+    options => { 
+      "dns-search" => "$::domain_name",
+      "dns-nameservers" => "$::cobbler_node_ip", 
+      "gateway" => "$::node_gateway"
+    },
+    onboot => 'true',
+    notify => Service['networking'],
+  }
+
+  network_config { 'lo':
+    ensure => 'present',
+    hotplug => false,
+    family => 'inet',
+    method => 'loopback',
+    onboot => 'true',
+    notify => Service['networking'],
+  }
+
+  network_config { "$::external_interface":
+    ensure => 'present',
+    hotplug => false,
+    family => 'inet',
+    method => 'static',
+    ipaddress => '0.0.0.0',
+    netmask => '255.255.255.255',
+    options => {},
+    onboot => 'true',
+    notify => Service['networking'],
+  }
+
+  service {'networking':
+    ensure => 'running',
+    restart => 'true',
+  }
 }
 
 

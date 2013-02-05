@@ -203,7 +203,7 @@ class control($crosstalk_ip) {
 # Needed to ensure a proper "second" interface is online
 # This same module may be useable for forcing bonded interfaces as well
 
-  network_config { "$::private_interface":
+  network_config { "$::public_interface":
     ensure => 'present',
     hotplug => false,
     family => 'inet',

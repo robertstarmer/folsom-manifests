@@ -16,9 +16,9 @@ default:
     netmask: 255.255.255.0
   public_range: 192.168.25.96/27
   install_drive: /dev/sda
-nodes:
-  build-25:
+build:
     type: build
+    name: build-server
     ip: 192.168.25.254
     power_address: 192.168.26.18
     power_id: Essex1-NOPOWER
@@ -27,8 +27,10 @@ nodes:
     power_type: ucs
     mac: 00:25:B5:00:05:7E
     mac1: 00:25:B5:00:05:6E
+nodes:
   control:
     type: control
+    name: control-server
     ip: 192.168.25.10
     power_address: 192.168.26.18
     power_id: Essex2
@@ -38,7 +40,7 @@ nodes:
     mac: 00:25:B5:00:05:5E
     mac1: 00:25:B5:00:05:4E
   compute1:
-    name: compute1
+    name: compute-server01
     type: compute
     ip: 192.168.25.21
     power_address: 192.168.26.18
@@ -49,7 +51,7 @@ nodes:
     mac: 00:25:B5:00:05:3E
     mac1: 00:25:B5:00:05:2E
   compute2:
-    name: compute2
+    name: compute-server02
     type: compute
     ip: 192.168.25.22
     power_address: 192.168.26.18

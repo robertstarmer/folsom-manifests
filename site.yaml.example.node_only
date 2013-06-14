@@ -1,0 +1,40 @@
+default:
+  management_ip_range:
+    start: 192.168.25.10
+    end: 192.168.25.63
+    gateway: 192.168.25.1
+    netmask: 255.255.255.0
+nodes:
+  control:
+    name: control-server
+    type: control
+    ip: 192.168.25.10
+    power_address: 192.168.26.18
+    power_id: Essex2
+    power_admin: admin
+    power_password: C1sc01234
+    power_type: ucs
+    mac: 00:25:B5:00:05:5E
+    mac1: 00:25:B5:00:05:4E
+  compute1:
+    name: compute-server01
+    type: compute
+    ip: 192.168.25.21
+    power_address: 192.168.26.18
+    power_id: Essex3
+    power_admin: admin
+    power_password: C1sc01234
+    power_type: ucs
+    mac: 00:25:B5:00:05:3E
+    mac1: 00:25:B5:00:05:2E
+  compute2:
+    name: compute-server02
+    type: compute
+    ip: 192.168.25.22
+    power_address: 192.168.26.18
+    power_id: Essex4
+    power_admin: admin
+    power_password: C1sc01234
+    power_type: ucs
+    mac: 00:25:B5:00:05:1E
+    mac1: 00:25:B5:00:05:0E

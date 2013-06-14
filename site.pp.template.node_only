@@ -1,0 +1,30 @@
+####### OpenStack Node Definitions #####
+
+node /build-node/ inherits master-node {
+
+#{% for node in nodes %}
+  cobbler_node { "{{ nodes[node].name }}": 
+    node_type => "{{ nodes[node].type }}",
+    mac => "{{ nodes[node].mac }}",
+    ip => "{{ nodes[node].ip }}",
+    power_address => "{{ nodes[node].power_address }}",
+    power_id  => "{{ nodes[node].power_id }}",
+    power_admin => "{{ nodes[node].power_admin }}",
+    power_password  => "{{ nodes[node].power_password }}",
+    power_type => "{{ nodes[node].power_type }}",
+ }
+
+#{% endfor %}
+
+### End repeated nodes ###
+}
+
+### Node types ###
+node {{ build.name }} inherits build-node { }
+
+#{% for node in nodes %}
+node {{ nodes[node].name }} inherits os_base { class { compute: crosstalk_ip => "$ipaddress"} }
+
+#{% endfor %}
+
+### End repeated nodes ###
